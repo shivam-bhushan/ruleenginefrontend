@@ -30,7 +30,7 @@ export default function EligibilityApp() {
 
     const fetchRules = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/rules');
+            const response = await fetch('https://rule-engine-backend-m132.onrender.com/api/rules');
             if (response.ok) {
                 const data = await response.json();
                 setRules(data.rules);
@@ -51,7 +51,7 @@ export default function EligibilityApp() {
     const addRule = async () => {
         if (inputName.trim() && inputExpression.trim()) {
             try {
-                const response = await fetch('http://localhost:3000/api/rules', {
+                const response = await fetch('https://rule-engine-backend-m132.onrender.com/api/rules', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -93,7 +93,7 @@ export default function EligibilityApp() {
 
     const deleteRule = async (id: string) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/rules/${id}`, {
+            const response = await fetch(`https://rule-engine-backend-m132.onrender.com/api/rules/${id}`, {
                 method: 'DELETE',
             });
 
@@ -133,7 +133,7 @@ export default function EligibilityApp() {
 
     const checkEligibility = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/evaluate', {
+            const response = await fetch('https://rule-engine-backend-m132.onrender.com/api/evaluate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ data: inputData, ruleIds: selectedRuleIds }),
